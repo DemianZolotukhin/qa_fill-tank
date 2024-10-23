@@ -11,8 +11,8 @@ describe('fillTank', () => {
     const customer1 = {
       money: 0,
       vehicle: {
-        maxTankCapacity: 40, 
-        fuelRemains: 0, 
+        maxTankCapacity: 40,
+        fuelRemains: 0,
       },
     };
 
@@ -36,20 +36,22 @@ describe('fillTank', () => {
     expect(customer1.money).toBe(30);
   });
 
-  it(`should change fuelRemains to maxTankCapacity`, () => {
+  it(`should change fuelRemains to value that user can`
+  +` afford and fuelRemains <= maxTankCapacity`, () => {
     const customer1 = {
-      money: 100,
+      money: 100, 
       vehicle: {
-        maxTankCapacity: 40,
+        maxTankCapacity: 40, 
         fuelRemains: 0,
       },
     };
-
+  
     fillTank(customer1, 1);
-
-    expect(customer1.vehicle.fuelRemains).toBe(40);
+  
+    expect(customer1.vehicle.fuelRemains).toBe(40); 
+    expect(customer1.money).toBe(60);
   });
-
+  
   it(`should change fuelRemains to amount of fuel that user can buy`, () => {
     const customer1 = {
       money: 20,
@@ -95,7 +97,7 @@ describe('fillTank', () => {
 
   it(`should change customer.money to decimal`
     + ` value if fuelPrice = decimal`
-    +` number and amount = decimal number`, () => {
+    + ` number and amount = decimal number`, () => {
     const customer1 = {
       money: 20,
       vehicle: {
